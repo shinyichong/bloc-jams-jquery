@@ -34,6 +34,9 @@
 		player.setVolume(event.target.value);
 	});
 
+	$('.total-time input').on('input', function (event) {
+	});
+
 	setInterval( () => {
 		if (player.playState !== 'playing') { return; }  
 		const currentTime = player.getTime();
