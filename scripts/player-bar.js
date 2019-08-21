@@ -15,15 +15,19 @@
 		player.playPause(nextSong);
 	});
 
-   $('#time-control input').on('input', function (event) {
+	$('#time-control input').on('input', function (event) {
+	});
+
+	 $('#volume-control input').on('input', function (event) {
+	 	 player.setVolume(event.target.value);
    });
 
-   setInterval( () => {
-   	 if (player.playState !== 'playing') { return; }  
-   	      const currentTime = player.getTime();
-     const duration = player.getDuration();
-     const percent = (currentTime / duration) * 100;
-       $('#time-control .current-time').text( currentTime );
-      $('#time-control input').val(percent);
-   }, 1000);
+	setInterval( () => {
+		if (player.playState !== 'playing') { return; }  
+		const currentTime = player.getTime();
+		const duration = player.getDuration();
+		const percent = (currentTime / duration) * 100;
+		$('#time-control .current-time').text( currentTime );
+		$('#time-control input').val(percent);
+	}, 1000);
 }
