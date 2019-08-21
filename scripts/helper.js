@@ -1,6 +1,7 @@
 class Helper {
 	playPauseAndUpdate (song) {
 		player.playPause(song);
+		const duration = player.currentlyPlaying.getDuration();
 		 }
 
 }
@@ -8,7 +9,7 @@ class Helper {
 setInterval( () => {
 		if (player.playState !== 'playing') { return; }  
 		const currentVolume = player.setVolume();
-		const duration = player.getDuration();
+		
 		const percent = (currentVolume / duration) * 100;
 		$('#volume-control .current-volume').text( currentVolume );
 		$('#volume-control input').val(percent);
