@@ -1,7 +1,8 @@
 class Helper {
 	playPauseAndUpdate () {
-		if (player.playState !== 'playing') { return; }
-		const p = album.songs.indexOf(player.playPause);
+		player.playPause(song);
+		total.time
+
 		 }
 
 }
