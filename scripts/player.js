@@ -6,7 +6,7 @@ class Player {
     this.soundObject = new buzz.sound(this.currentlyPlaying.soundFileUrl);
   }
 
-  helper.playPauseAndUpdate (song = this.currentlyPlaying) {
+  player.playPauseAndUpdate (song = this.currentlyPlaying) {
     if (this.currentlyPlaying !== song) {
       // Stop the currently playing sound file (even if nothing is playing)
       this.soundObject.stop();
