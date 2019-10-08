@@ -6,7 +6,7 @@ class Player {
     this.soundObject = new buzz.sound(this.currentlyPlaying.soundFileUrl);
   }
 
-  player.playPauseAndUpdate (song = this.currentlyPlaying) {
+  playPauseAndUpdate (song = this.currentlyPlaying) {
     if (this.currentlyPlaying !== song) {
       // Stop the currently playing sound file (even if nothing is playing)
       this.soundObject.stop();
@@ -39,12 +39,11 @@ class Player {
     this.volume = percent;
     this.soundObject.setVolume(percent);
   }
-}
-
-prettyTime(song){
+  prettyTime(song){
     const minutes= Math.floor(song / 60);
     const seconds = Number(song%60/100).toFixed(2).substring(2);
     return minutes+':'+seconds;
+}
   }
 
 const player = new Player();
