@@ -6,21 +6,13 @@ class Player {
     this.soundObject = new buzz.sound(this.currentlyPlaying.soundFileUrl);
   }
 
-  getDuration() {
-    return this.soundObject.getDuration();
-  }
-
-  getTime() {
-    return this.soundObject.getTime();
-  }
-  
-  playPause (song = this.currentlyPlaying) {
+  helper.playPauseAndUpdate (song = this.currentlyPlaying) {
     if (this.currentlyPlaying !== song) {
       // Stop the currently playing sound file (even if nothing is playing)
       this.soundObject.stop();
       // Clear classes on the song that's currently playing
       this.currentlyPlaying.element.removeClass('playing paused');
-      
+
       // Update our currentlyPlaying and playState properties
       this.currentlyPlaying = song;
       this.playState = 'stopped';
@@ -37,23 +29,22 @@ class Player {
       this.currentlyPlaying.element.removeClass('playing').addClass('paused');
     }
   }
-  
+
   skipTo (percent) {
     if (this.playState !== 'playing') { return }
     this.soundObject.setTime( (percent / 100) * this.soundObject.getDuration() );
   }
-  
+
   setVolume (percent) {
     this.volume = percent;
     this.soundObject.setVolume(percent);
   }
-
-  myTime (timeInSeconds) {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = ( "00" + (Math.floor(timeInSeconds % 60))).substr(-2);
-    return `${minutes}:${seconds}`;
-  }
 }
 
-const player = new Player();
+prettyTime(song){
+    const minutes= Math.floor(song / 60);
+    const seconds = Number(song%60/100).toFixed(2).substring(2);
+    return minutes+':'+seconds;
+  }
 
+const player = new Player();
